@@ -1,0 +1,1036 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Susmitha Sivakumar | Portfolio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --bg: #050509;
+      --bg-elevated: #101018;
+      --accent: #8b5cf6;
+      --accent-soft: rgba(139, 92, 246, 0.2);
+      --text-main: #f9fafb;
+      --text-muted: #9ca3af;
+      --border-subtle: #27272f;
+      --card-radius: 1.5rem;
+      --transition-fast: 0.2s ease;
+      --max-width: 1100px;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: "Poppins", sans-serif;
+      background: radial-gradient(circle at top, #111827 0, #020617 45%, #000 100%);
+      color: var(--text-main);
+      min-height: 100vh;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    /* Layout */
+
+    .page {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 1.5rem 1.2rem 4rem;
+    }
+
+    /* Navbar */
+
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(16px);
+      background: linear-gradient(to bottom, rgba(0,0,0,0.85), transparent);
+      margin-bottom: 1.5rem;
+    }
+
+    .nav-inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0.8rem 0.2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .nav-logo {
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      font-size: 0.95rem;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.2rem;
+      font-size: 0.9rem;
+    }
+
+    .nav-links a {
+      position: relative;
+      color: var(--text-muted);
+      padding-bottom: 0.1rem;
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 0;
+      height: 2px;
+      background: var(--accent);
+      transition: width var(--transition-fast);
+    }
+
+    .nav-links a:hover {
+      color: var(--text-main);
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    @media (max-width: 720px) {
+      .nav-inner {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .nav-links {
+        flex-wrap: wrap;
+      }
+    }
+
+    /* Hero */
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+      gap: 2.5rem;
+      align-items: center;
+      margin-top: 1rem;
+      margin-bottom: 2.5rem;
+    }
+
+    @media (max-width: 900px) {
+      .hero {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    .hero-text h1 {
+      font-size: clamp(2.1rem, 3vw, 2.7rem);
+      line-height: 1.1;
+      margin-bottom: 0.5rem;
+    }
+
+    .hero-highlight {
+      background: linear-gradient(90deg, #a855f7, #22d3ee);
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    .hero-subtitle {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      max-width: 34rem;
+      margin-bottom: 1.2rem;
+    }
+
+    .hero-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .tag {
+      font-size: 0.75rem;
+      border-radius: 999px;
+      padding: 0.3rem 0.7rem;
+      border: 1px solid var(--border-subtle);
+      background: rgba(15, 23, 42, 0.85);
+      color: var(--text-muted);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.25rem;
+    }
+
+    .tag-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 999px;
+      background: var(--accent);
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+      align-items: center;
+    }
+
+    .btn-primary,
+    .btn-ghost {
+      border-radius: 999px;
+      font-size: 0.85rem;
+      padding: 0.55rem 1.2rem;
+      border: 1px solid transparent;
+      cursor: pointer;
+      transition: background var(--transition-fast), transform var(--transition-fast), box-shadow var(--transition-fast), border var(--transition-fast);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #8b5cf6, #22d3ee);
+      color: #0b1020;
+      font-weight: 600;
+      box-shadow: 0 0 18px rgba(59, 130, 246, 0.5);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 0 26px rgba(129, 140, 248, 0.8);
+    }
+
+    .btn-ghost {
+      background: rgba(15, 23, 42, 0.8);
+      border-color: var(--border-subtle);
+      color: var(--text-muted);
+    }
+
+    .btn-ghost:hover {
+      border-color: var(--accent);
+      color: var(--text-main);
+      transform: translateY(-1px);
+    }
+
+    /* Hero profile */
+
+    .hero-profile {
+      display: flex;
+      justify-content: center;
+    }
+
+    .profile-card {
+      background: radial-gradient(circle at top, rgba(139,92,246,0.2), rgba(15,23,42,0.95));
+      border-radius: 2rem;
+      padding: 1.6rem 1.4rem 1.4rem;
+      border: 1px solid rgba(148, 163, 184, 0.25);
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.8);
+      max-width: 260px;
+      width: 100%;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .profile-glow {
+      position: absolute;
+      inset: -40%;
+      background: radial-gradient(circle at top, rgba(125,211,252,0.18), transparent 60%);
+      opacity: 0.7;
+      pointer-events: none;
+    }
+
+    .profile-avatar-wrap {
+      position: relative;
+      margin-bottom: 1rem;
+    }
+
+    .profile-avatar-border {
+      width: 150px;
+      height: 150px;
+      border-radius: 999px;
+      margin: 0 auto;
+      background: conic-gradient(from 160deg, #22d3ee, #8b5cf6, #ec4899, #22d3ee);
+      padding: 3px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .profile-avatar-inner {
+      width: 100%;
+      height: 100%;
+      border-radius: 999px;
+      background: #020617;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .profile-avatar-inner img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .profile-status {
+      position: absolute;
+      right: 18%;
+      bottom: 22%;
+      background: rgba(15, 23, 42, 0.95);
+      color: #bbf7d0;
+      border-radius: 999px;
+      padding: 0.2rem 0.6rem;
+      font-size: 0.65rem;
+      border: 1px solid rgba(34, 197, 94, 0.6);
+      box-shadow: 0 0 12px rgba(34, 197, 94, 0.8);
+    }
+
+    .profile-name {
+      font-weight: 600;
+      margin-bottom: 0.15rem;
+    }
+
+    .profile-role {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-bottom: 0.8rem;
+    }
+
+   .profile-meta {
+  display: flex;
+  flex-direction: column;
+  align-items: center;     /* centers horizontally */
+  justify-content: center;
+  text-align: center;
+  gap: 6px;                /* space between location & email */
+  margin-top: 8px;
+  font-size: 0.85rem;
+  color: #cbd5f5;          /* adjust to your theme */
+  word-break: break-word; /* prevents email overflow */
+}
+
+
+    .profile-meta span {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.25rem;
+    }
+
+    /* Sections */
+
+    section {
+      margin-bottom: 2.5rem;
+    }
+
+    .section-title {
+      font-size: 1.2rem;
+      margin-bottom: 1rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .section-title span {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: var(--accent);
+    }
+
+    .section-subtext {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 1.2rem;
+    }
+
+    /* Cards */
+
+    .card {
+      background: rgba(15, 23, 42, 0.92);
+      border-radius: var(--card-radius);
+      border: 1px solid var(--border-subtle);
+      padding: 1.1rem 1.2rem;
+      margin-bottom: 1rem;
+      transition: transform var(--transition-fast), box-shadow var(--transition-fast), border var(--transition-fast), background var(--transition-fast);
+    }
+
+    .card:hover {
+      transform: translateY(-3px);
+      border-color: var(--accent-soft);
+      background: radial-gradient(circle at top left, rgba(139,92,246,0.14), rgba(15,23,42,0.96));
+      box-shadow: 0 16px 40px rgba(15, 23, 42, 0.9);
+    }
+
+    .card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 0.6rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .card-title {
+      font-size: 0.95rem;
+      font-weight: 500;
+    }
+
+    .card-tag {
+      font-size: 0.7rem;
+      padding: 0.2rem 0.55rem;
+      border-radius: 999px;
+      border: 1px solid rgba(148,163,184,0.4);
+      color: var(--text-muted);
+    }
+
+    .card-body {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    .card-body ul {
+      margin-top: 0.4rem;
+      padding-left: 1rem;
+    }
+
+    .card-body li {
+      margin-bottom: 0.25rem;
+    }
+
+    .pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+      margin-top: 0.5rem;
+    }
+
+    .pill {
+      font-size: 0.7rem;
+      padding: 0.16rem 0.55rem;
+      border-radius: 999px;
+      background: rgba(15,23,42,0.9);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-muted);
+    }
+
+    .card-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      font-size: 0.8rem;
+      color: #a5b4fc;
+      margin-top: 0.45rem;
+    }
+
+    .card-link span {
+      font-size: 0.8rem;
+    }
+
+    /* Grid layouts */
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 1rem;
+    }
+
+    .two-col {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+      gap: 1.5rem;
+    }
+
+    @media (max-width: 900px) {
+      .two-col {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    /* Contact */
+
+    .contact-line {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 0.35rem;
+    }
+
+    .contact-line strong {
+      color: var(--text-main);
+      font-weight: 500;
+    }
+
+    .link-inline {
+      color: #a5b4fc;
+    }
+
+    /* Footer */
+
+    footer {
+      margin-top: 2rem;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      border-top: 1px solid var(--border-subtle);
+      padding-top: 1rem;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 0.5rem;
+    }
+
+    /* 🚗 Racing Car Animation */
+
+    .car-racer-container {
+      position: fixed;
+      bottom: 1.4rem;
+      left: -20%;
+      width: 80px;
+      height: 40px;
+      z-index: 60;
+      pointer-events: none; /* so it doesn’t block clicks */
+      animation: car-drive 6s linear infinite;
+    }
+
+    .car-racer {
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, #f97316, #ea580c);
+      border-radius: 16px 18px 10px 10px;
+      box-shadow: 0 8px 18px rgba(0, 0, 0, 0.7);
+      position: relative;
+      transform-origin: center;
+      transform: perspective(260px) rotateY(-22deg);
+    }
+
+    .car-top {
+      position: absolute;
+      left: 14px;
+      top: -10px;
+      width: 52px;
+      height: 20px;
+      background: #020617;
+      border-radius: 14px 14px 8px 8px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.7);
+    }
+
+    .car-window {
+      position: absolute;
+      left: 6px;
+      top: 3px;
+      width: 40px;
+      height: 13px;
+      background: linear-gradient(135deg, #1f2937, #6b7280);
+      border-radius: 10px;
+    }
+
+    .car-wheel {
+      position: absolute;
+      bottom: -10px;
+      width: 16px;
+      height: 16px;
+      border-radius: 999px;
+      background: #020617;
+      border: 2px solid #4b5563;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.8);
+      animation: wheel-spin 0.5s linear infinite;
+    }
+
+    .car-wheel::after {
+      content: "";
+      position: absolute;
+      inset: 4px;
+      border-radius: inherit;
+      background: #9ca3af;
+    }
+
+    .car-wheel.left {
+      left: 10px;
+    }
+
+    .car-wheel.right {
+      right: 10px;
+    }
+
+    .car-light-front {
+      position: absolute;
+      right: -6px;
+      top: 13px;
+      width: 8px;
+      height: 6px;
+      border-radius: 8px;
+      background: #fee2e2;
+      box-shadow: 0 0 12px rgba(254, 226, 226, 0.9);
+    }
+
+    .car-light-back {
+      position: absolute;
+      left: -4px;
+      top: 16px;
+      width: 6px;
+      height: 6px;
+      border-radius: 8px;
+      background: #fecaca;
+      box-shadow: 0 0 10px rgba(248, 113, 113, 0.9);
+    }
+
+    .car-shadow {
+      position: absolute;
+      bottom: -14px;
+      left: 10px;
+      right: 10px;
+      height: 10px;
+      background: radial-gradient(circle, rgba(0,0,0,0.7), transparent 60%);
+      opacity: 0.6;
+    }
+
+    @keyframes car-drive {
+      0% {
+        transform: translateX(-120%) translateY(0);
+      }
+      25% {
+        transform: translateX(-20%) translateY(-2px);
+      }
+      50% {
+        transform: translateX(40%) translateY(0);
+      }
+      75% {
+        transform: translateX(90%) translateY(-2px);
+      }
+      100% {
+        transform: translateX(140%) translateY(0);
+      }
+    }
+
+    @keyframes wheel-spin {
+      0% {
+        transform: rotate(0deg);
+      }
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- 🚗 Racing Car (fixed at bottom, loops from left to right) -->
+  <div class="car-racer-container">
+    <div class="car-racer">
+      <div class="car-top">
+        <div class="car-window"></div>
+      </div>
+      <div class="car-light-front"></div>
+      <div class="car-light-back"></div>
+      <div class="car-wheel left"></div>
+      <div class="car-wheel right"></div>
+      <div class="car-shadow"></div>
+    </div>
+  </div>
+
+  <!-- Navbar -->
+  <header class="nav">
+    <div class="nav-inner">
+      <div class="nav-logo">Susmitha • Portfolio</div>
+      <nav class="nav-links">
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#experience">Experience</a>
+        <a href="#certifications">Certifications</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="page">
+    <!-- Hero -->
+    <section class="hero" id="about">
+      <div class="hero-text">
+        <h1>
+          Hi, I'm <span class="hero-highlight">Susmitha&nbsp;Sivakumar</span><br />
+          Full-Stack Developer & CSE Student
+        </h1>
+        <p class="hero-subtitle">
+          Computer Science and Engineering student with hands-on experience in full-stack development, MERN-based
+          applications, cloud tools, and system troubleshooting. Passionate about developing scalable full-stack
+          applications, with the ability to handle technical issues calmly and effectively whenever needed.
+        </p>
+
+        <div class="hero-tags">
+          <div class="tag"><span class="tag-dot"></span>Full Stack (MERN & PHP)</div>
+          <div class="tag"><span class="tag-dot"></span>Java Problem Solving</div>
+          <div class="tag"><span class="tag-dot"></span>System Troubleshooting</div>
+          <div class="tag"><span class="tag-dot"></span>Cloud & Databases</div>
+        </div>
+
+        <div class="hero-actions">
+          <a class="btn-primary" href="#projects">
+            View My Projects
+          </a>
+          <a class="btn-ghost" href="#contact">
+            Contact Me
+          </a>
+        </div>
+      </div>
+
+      <div class="hero-profile">
+        <div class="profile-card">
+          <div class="profile-glow"></div>
+          <div class="profile-avatar-wrap">
+            <div class="profile-avatar-border">
+              <div class="profile-avatar-inner">
+                <!-- 🔻 Replace the src with your own image path or URL -->
+                <img src="susmi photo.jpeg" alt="Profile photo of Susmitha" />
+              </div>
+            </div>
+            <div class="profile-status">Open to opportunities</div>
+          </div>
+
+          <div class="profile-name">Susmitha Sivakumar</div>
+          <div class="profile-role">B.E CSE • Nandha Engineering College</div>
+         <div class="profile-meta">
+  <div>📍 Erode</div>
+  <div>📧 susmithasivakumar1832006@gmail.com</div>
+</div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills -->
+    <section id="skills">
+      <h2 class="section-title"><span></span>Skills</h2>
+      <p class="section-subtext">
+        A blend of full-stack development, databases, cloud tools, and practical troubleshooting experience.
+      </p>
+
+      <div class="skills-grid">
+        <div class="card">
+          <div class="card-header">
+            <div class="card-title">Programming & Backend</div>
+            <div class="card-tag">Core</div>
+          </div>
+          <div class="card-body">
+            Java, PHP, JavaScript, REST APIs, Node.js (Express), backend logic, role-based access, input validation.
+            <div class="pill-row">
+              <span class="pill">Java</span>
+              <span class="pill">PHP</span>
+              <span class="pill">Node.js</span>
+              <span class="pill">Express</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <div class="card-title">Frontend & UI</div>
+            <div class="card-tag">User Experience</div>
+          </div>
+          <div class="card-body">
+            HTML, CSS, Bootstrap, React, responsive layouts, clean dashboard design inspired by modern web apps.
+            <div class="pill-row">
+              <span class="pill">HTML</span>
+              <span class="pill">CSS</span>
+              <span class="pill">Bootstrap</span>
+              <span class="pill">React</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <div class="card-title">Databases & Cloud</div>
+            <div class="card-tag">Data Layer</div>
+          </div>
+          <div class="card-body">
+            MySQL and MongoDB (Atlas) for structured and NoSQL data, basic cloud concepts, deployments on Render.
+            <div class="pill-row">
+              <span class="pill">MySQL</span>
+              <span class="pill">MongoDB Atlas</span>
+              <span class="pill">Render</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <div class="card-title">Troubleshooting & Tools</div>
+            <div class="card-tag">Problem Solving</div>
+          </div>
+          <div class="card-body">
+            System diagnostics, OS / app installation issues, iPod/system restoration, VS Code & project setup,
+            using AI tools efficiently to debug and fix errors.
+            <div class="pill-row">
+              <span class="pill">Git</span>
+              <span class="pill">VS Code</span>
+              <span class="pill">System Fixes</span>
+              <span class="pill">AI-assisted Debugging</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects -->
+    <section id="projects">
+      <h2 class="section-title"><span></span>Projects</h2>
+      <p class="section-subtext">
+        End-to-end projects that combine frontend, backend, databases, and deployment.
+      </p>
+
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">Nandha College ERP – Full Stack Web App</div>
+          <div class="card-tag">PHP • MSSQL • MERN • ERP</div>
+        </div>
+        <div class="card-body">
+          <ul>
+           <li>Built dashboards for Students, Staff, HOD, and Principal to streamline academic workflows.</li>
+<li>Implemented backend using PHP with MSSQL for secure and efficient data storage and retrieval.</li>
+<li>Designed role-based access to improve usability, reduce manual processes, and enhance system security.</li>
+<li>Additionally developed extended dashboards using the MERN stack, integrating real-time UI components and API-driven modules.</li>
+
+          </ul>
+          <div class="pill-row">
+            <span class="pill">PHP</span>
+            <span class="pill">MSSQL</span>
+               <span class="pill">MERN</span>
+            <span class="pill">Role-based access</span>
+            <span class="pill">Dashboard UI</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">Heavy Vehicle Management System (HVMS) – MERN</div>
+          <div class="card-tag">MERN • Deployed</div>
+        </div>
+        <div class="card-body">
+          <ul>
+            <li>Developed a full MERN application to manage heavy vehicles, records, and operations.</li>
+            <li>Implemented authentication, CRUD operations, and dashboards for efficient management.</li>
+            <li>Deployed frontend and backend on Render with MongoDB Atlas as the cloud database.</li>
+          </ul>
+          <!-- 🔻 Replace # with your deployed HVMS link -->
+          <a class="card-link" href="#" target="_blank" rel="noopener">
+            <span>🔗 View HVMS Live</span>
+          </a>
+          <div class="pill-row">
+            <span class="pill">React</span>
+            <span class="pill">Node.js</span>
+            <span class="pill">Express</span>
+            <span class="pill">MongoDB Atlas</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">Sign Language Detection – Computer Vision</div>
+          <div class="card-tag">Video • ML/CV (Beginner)</div>
+        </div>
+        <div class="card-body">
+          <ul>
+            <li>Created a video-based sign language detection system using computer vision and ML tools.</li>
+            <li>Implemented real-time gesture recognition without deep learning background.</li>
+            <li>Integrated the model outputs into a working application interface.</li>
+          </ul>
+          <div class="pill-row">
+            <span class="pill">Computer Vision</span>
+            <span class="pill">ML Tools</span>
+            <span class="pill">Gesture Recognition</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Experience & Education -->
+    <section id="experience">
+      <h2 class="section-title"><span></span>Experience & Education</h2>
+      <div class="two-col">
+        <div>
+          <h3 class="section-subtext" style="margin-bottom: 0.6rem;">Internships & Training</h3>
+
+          <div class="card">
+            <div class="card-header">
+              <div class="card-title">SkillVertex – 2 Months Training + 1 Month Internship</div>
+              <div class="card-tag">Full Stack</div>
+            </div>
+            <div class="card-body">
+              <ul>
+                <li>Trained on full-stack development concepts and real-time tasks.</li>
+                <li>Worked on backend logic, APIs, and debugging small project modules.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-header">
+              <div class="card-title">Levroun – 15 Days Internship</div>
+              <div class="card-tag">Software Exposure</div>
+            </div>
+            <div class="card-body">
+              <ul>
+                <li>Gained practical exposure to software development workflows.</li>
+                <li>Improved understanding of project structure and team-based work.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <h3 class="section-subtext" style="margin-bottom: 0.6rem;">Education</h3>
+
+          <div class="card">
+            <div class="card-header">
+              <div class="card-title">B.E. Computer Science and Engineering</div>
+              <div class="card-tag">2023 – Present</div>
+            </div>
+            <div class="card-body">
+              Nandha Engineering College, Erode.<br />
+              Actively involved in academic projects, ERP development, and self-learning beyond the syllabus.
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-header">
+              <div class="card-title">Interests</div>
+              <div class="card-tag">Beyond Code</div>
+            </div>
+            <div class="card-body">
+              Full-stack development, troubleshooting systems and apps, cloud technologies, art & craft, cars &
+              driving, and social welfare activities.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Certifications -->
+    <section id="certifications">
+      <h2 class="section-title"><span></span>Certifications & Courses</h2>
+      <p class="section-subtext">
+        Continuous learning through courses, badges, and hands-on practice.
+      </p>
+
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">Snowflake Data Warehouse – Badge 1</div>
+          <div class="card-tag">Cloud Data</div>
+        </div>
+        <div class="card-body">
+          Completed Snowflake Badge 1, covering core concepts of cloud data warehousing, virtual warehouses,
+          databases, schemas, and basic SQL usage in Snowflake.
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">MongoDB Course & Certification</div>
+          <div class="card-tag">Database</div>
+        </div>
+        <div class="card-body">
+          Learned MongoDB fundamentals, collections, CRUD operations, and using MongoDB Atlas as a cloud-hosted
+          database.
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">Cloud Computing – Course Completed</div>
+          <div class="card-tag">Cloud Basics</div>
+        </div>
+        <div class="card-body">
+          Gained foundational understanding of cloud service models, deployment models, and advantages of cloud-based
+          architectures.
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">Privacy & Security in Online Social Media</div>
+          <div class="card-tag">Security</div>
+        </div>
+        <div class="card-body">
+          Studied online privacy risks, security practices, and responsible usage of social platforms and digital
+          identities.
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact">
+      <h2 class="section-title"><span></span>Contact & Links</h2>
+      <p class="section-subtext">
+        Feel free to reach out for internships, projects, collaborations, or tech discussions.
+      </p>
+
+      <div class="card">
+        <div class="card-body">
+          <p class="contact-line">
+            <strong>Email:</strong> <a class="link-inline" href="mailto:susmithasivakumar1832006@gmail.com">susmithasivakumar1832006@gmail.com</a>
+          </p>
+          <p class="contact-line">
+            <strong>Phone:</strong> <span>+91-9342570533</span>
+          </p>
+          <p class="contact-line">
+            <strong>LinkedIn:</strong>
+            <a class="link-inline" href="https://www.linkedin.com/in/susmitha-sivakumar-84b8b0278" target="_blank" rel="noopener">
+              linkedin.com/in/susmitha-sivakumar-84b8b0278
+            </a>
+          </p>
+          <p class="contact-line">
+            <strong>GitHub:</strong>
+            <a class="link-inline" href="https://github.com/Susmitha-18" target="_blank" rel="noopener">
+              github.com/Susmitha-18
+            </a>
+          </p>
+          <p class="contact-line">
+            <strong>Portfolio (this site on GitHub Pages):</strong>
+            <!-- After hosting, replace # with your GitHub Pages URL -->
+            <a class="link-inline" href="#" target="_blank" rel="noopener">your-github-pages-link</a>
+          </p>
+          <p class="contact-line">
+            <strong>Nandha Engineering College Portal:</strong>
+            <!-- Replace # with your NEC portal profile link -->
+            <a class="link-inline" href="#" target="_blank" rel="noopener">NEC Student Portal Profile</a>
+          </p>
+          <p class="contact-line">
+            <strong>HVMS (Heavy Vehicle Management System):</strong>
+            <!-- Replace # with your live HVMS URL -->
+            <a class="link-inline" href="#" target="_blank" rel="noopener">View HVMS Web App</a>
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <span>© <span id="year"></span> Susmitha Sivakumar</span>
+      <span>Built with ❤️, AI, and a love for full-stack development.</span>
+    </footer>
+  </main>
+
+  <script>
+    // Set current year in footer
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
